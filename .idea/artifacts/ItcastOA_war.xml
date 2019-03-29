@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ItcastOA:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ItcastOA.war">
+      <element id="artifact" artifact-name="ItcastOA:war exploded" />
+    </root>
+  </artifact>
+</component>
