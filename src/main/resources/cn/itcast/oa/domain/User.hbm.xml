@@ -9,5 +9,12 @@
             <generator class="native"></generator>
         </id>
         <property name="name"/>
+        <property name="department"/>
+        <property name="loginName"/>
+        <property name="gender"></property>
+        <property name="phoneNumber"></property>
+        <property name="password"></property>
+        <property name="email"></property>
+        <property name="description"></property>
     </class>
 </hibernate-mapping>

@@ -16,7 +16,7 @@ public class BaseDaoImpl<T> implements BaseDao {
     protected Class<T> clazz;
 
     public BaseDaoImpl(){
-        //通过反射得到T的真是类型
+        //通过反射得到T的真实类型
         ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
         this.clazz = (Class) pt.getActualTypeArguments()[0];
       //  System.out.println(clazz);
