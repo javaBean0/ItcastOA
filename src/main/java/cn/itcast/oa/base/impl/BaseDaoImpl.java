@@ -9,7 +9,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Collections;
 import java.util.List;
 
-public class BaseDaoImpl<T> implements BaseDao {
+public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Resource
     private SessionFactory sessionFactory;
@@ -33,7 +33,7 @@ public class BaseDaoImpl<T> implements BaseDao {
     }
 
     @Override
-    public Object getById(Long id) {
+    public T getById(Long id) {
         return getSession().get(clazz, id);
     }
 
@@ -59,8 +59,9 @@ public class BaseDaoImpl<T> implements BaseDao {
                 .setParameterList("ids", ids).list();
     }
 
-    @Override
-    public List findAll() {
-        return getSession().createQuery("from" + clazz.getSimpleName()).list();
+    public List<T> findAll() {
+        return getSession().createQuery(//
+                "FROM " + clazz.getSimpleName())//
+                .list();
     }
 }
