@@ -7,6 +7,8 @@
        <id name="id">
            <generator class="native"></generator>
        </id>
+        <property name="name"></property>
+        <property name="description"></property>
         <!--users属性， 本类与User的一对多-->
         <set name="users">
             <key column="departmentId"></key>

@@ -14,7 +14,7 @@
        					   http://www.springframework.org/schema/context/spring-context.xsd
                          http://www.springframework.org/schema/beans ">
 
-    <bean id="testController" class="cn.itcast.oa.controller.TestController"></bean>
+    <bean id="testController" class="cn.itcast.oa.web.controller.TestController"></bean>
 
 
     <!-- 自动扫描与装配bean -->

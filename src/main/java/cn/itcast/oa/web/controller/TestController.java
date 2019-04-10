@@ -1,4 +1,4 @@
-package cn.itcast.oa.controller;
+package cn.itcast.oa.web.controller;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RestController;

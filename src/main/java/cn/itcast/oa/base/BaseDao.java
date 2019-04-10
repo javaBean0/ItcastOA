@@ -34,7 +34,7 @@ public interface BaseDao<T> {
      * @param ids
      * @return
      */
-    List<T> findByIds(Long[] ids);
+    List<T> getByIds(Long[] ids);
 
     /**
      * 查询所有

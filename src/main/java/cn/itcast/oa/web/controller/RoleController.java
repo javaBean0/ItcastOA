@@ -1,11 +1,9 @@
-package cn.itcast.oa.controller;
+package cn.itcast.oa.web.controller;
 
+import cn.itcast.oa.base.BaseController;
 import cn.itcast.oa.domain.Role;
-import cn.itcast.oa.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -13,17 +11,8 @@ import java.util.List;
 
 @Controller
 @Scope("prototype")
-public class RoleController extends ActionSupport implements ModelDriven<Role> {
+public class RoleController extends BaseController<Role> {
 
-    @Autowired
-    private RoleService roleService;
-
-    private Role model = new Role();
-
-    @Override
-    public Role getModel() {
-        return model;
-    }
 
     /**
      * 列表
@@ -53,17 +42,25 @@ public class RoleController extends ActionSupport implements ModelDriven<Role> {
 
     /**添加*/
     public String add() throws Exception{
+        roleService.save(model);
         return "toList";
     }
 
     /**修改页面*/
     public String editUI() throws Exception{
+        Role role = roleService.getById(model.getId());
+        ActionContext.getContext().getValueStack().push(role);
         return "editUI";
     }
 
     /**修改*/
     public String edit() throws Exception{
-        return "edit";
+        Role role = roleService.getById(model.getId());
+        System.out.println("role : " + role.getName() + " :  " + role.getDescription());
+        System.out.println("model : " + model.getName() +  ": " + model.getDescription());
+        BeanUtils.copyProperties(model, role);
+        roleService.update(role);
+        return "toList";
     }
 
 
