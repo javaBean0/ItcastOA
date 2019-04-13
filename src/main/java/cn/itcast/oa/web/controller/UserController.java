@@ -4,9 +4,12 @@ import cn.itcast.oa.base.BaseController;
 import cn.itcast.oa.domain.Department;
 import cn.itcast.oa.domain.Role;
 import cn.itcast.oa.domain.User;
+import cn.itcast.oa.utils.DepartmentUtils;
 import com.opensymphony.xwork2.ActionContext;
+import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,13 +35,13 @@ public class UserController extends BaseController<User> {
      */
     public String addUI() throws Exception {
         //准备数据，departmentList
-        //TODO 应该是显示树状结构， 先使用所有部门列表代替
-        List<Department> departmentList = departmentService.findAll();
+        List<Department> topList = departmentService.findTopList();
+        List<Department> departmentList = DepartmentUtils.getAllDepartments(topList);
         ActionContext.getContext().put("departmentList", departmentList);
         //准备数据， roleList
         List<Role> roleList = roleService.findAll();
         ActionContext.getContext().put("roleList", roleList);
-        return "addUI";
+        return "saveUI";
     }
 
     /**
@@ -58,13 +61,30 @@ public class UserController extends BaseController<User> {
      * 编辑页面
      */
     public String editUI() throws Exception {
-        return "editUI";
+        //准备数据，departmentList
+        List<Department> topList = departmentService.findTopList();
+        List<Department> departmentList = DepartmentUtils.getAllDepartments(topList);
+        ActionContext.getContext().put("departmentList", departmentList);
+        //准备数据， roleList
+        List<Role> roleList = roleService.findAll();
+        ActionContext.getContext().put("roleList", roleList);
+        User user = userService.getById(model.getId());
+        ActionContext.getContext().getValueStack().push(user);
+        if(user.getDepartment() != null){
+            departmentId = user.getDepartment().getId();
+        }
+        return "saveUI";
     }
 
     /**
      * 编辑
      */
     public String edit() throws Exception {
+        User user = userService.getById(model.getId());
+        BeanUtils.copyProperties(model, user);
+        user.setDepartment(departmentService.getById(departmentId));
+        user.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));
+        userService.update(user);
         return "toList";
     }
 
@@ -76,10 +96,42 @@ public class UserController extends BaseController<User> {
         return "toList";
     }
 
+    /**登录页面*/
+    public String loginUI() throws Exception{
+        return "loginUI";
+    }
+
+    /**登录*/
+    public String login() throws Exception{
+        //如果直接通过url访问
+        if(model.getLoginName() == null){
+            addFieldError("login", "您还没有登录，请登录！");
+            return "loginUI";
+        }
+        User user = userService.getByLoginnameAndPassword(model.getLoginName(), model.getPassword());
+        if(user == null){
+            addFieldError("login", "用户名或密码不正确");
+            return "loginUI";
+        }
+        //登录成功，保存用户信息到session中
+        ActionContext.getContext().getSession().put("user", user);
+        return "toIndex";
+    }
+
+    /**注销*/
+    public String logout() throws Exception{
+        ActionContext.getContext().getSession().remove("user");
+        return "logout";
+    }
+
+
     /**
      * 初始化密码
      */
     public String initPassword() throws Exception {
+        User user = userService.getById(model.getId());
+        user.setPassword(DigestUtils.md5DigestAsHex("1234".getBytes()));
+        userService.update(user);
         return "toList";
     }
 

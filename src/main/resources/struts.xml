@@ -14,33 +14,38 @@
 	<package name="default" namespace="/" extends="struts-default">
         <!--解决通配符不能用问题-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
-		<!-- 测试用的action，当与Spring整合后，class属性写的就是Spring中bean的名称 -->
-		<action name="test" class="testController" method="test">
-			<result name="success">/test.jsp</result>
-		</action>
+
+        <!-- 首页 -->
+        <action name="homeAction_*" class="homeController" method="{1}">
+            <result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
+        </action>
+
 		<!-- 岗位管理 -->
 		<action name="roleAction_*" class="roleController" method="{1}">
 			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
-			<result name="addUI">/WEB-INF/jsp/roleAction/addUI.jsp</result>
-			<result name="editUI">/WEB-INF/jsp/roleAction/editUI.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
+			<result name="setPrivilegeUI">/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp</result>
 			<result name="toList" type="redirectAction">roleAction_list</result>
 		</action>
 
 		<!-- 部门管理 -->
 		<action name="departmentAction_*" class="departmentController" method="{1}">
 			<result name="list">/WEB-INF/jsp/departmentAction/list.jsp</result>
-			<result name="addUI">/WEB-INF/jsp/departmentAction/addUI.jsp</result>
-			<result name="editUI">/WEB-INF/jsp/departmentAction/editUI.jsp</result>
-			<result name="toList" type="redirectAction">departmentAction_list</result>
+			<result name="saveUI">/WEB-INF/jsp/departmentAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">departmentAction_list?parentId=${parentId}</result>
 		</action>
 
 
         <!-- 用户管理 -->
         <action name="userAction_*" class="userController" method="{1}">
             <result name="list">/WEB-INF/jsp/userAction/list.jsp</result>
-            <result name="addUI">/WEB-INF/jsp/userAction/addUI.jsp</result>
-            <result name="editUI">/WEB-INF/jsp/userAction/editUI.jsp</result>
+            <result name="saveUI">/WEB-INF/jsp/userAction/saveUI.jsp</result>
             <result name="toList" type="redirectAction">userAction_list</result>
+
+
+			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+			<result name="toIndex" type="redirect">/index.jsp</result>
         </action>
 	</package>
 </struts>

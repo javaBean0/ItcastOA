@@ -14,6 +14,11 @@
             <key column="roleId"></key>
             <many-to-many class="User" column="userId"></many-to-many>
         </set>
+        <!--privileges属性，与Privilege类的多对一关系-->
+        <set name="privileges" table="itcast_role_privilege" lazy="false">
+            <key column="roleId"></key>
+            <many-to-many class="Privilege" column="privilegeId"></many-to-many>
+        </set>
 
     </class>
 

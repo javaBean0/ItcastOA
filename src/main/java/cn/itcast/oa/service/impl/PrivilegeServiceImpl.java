@@ -1,0 +1,22 @@
+package cn.itcast.oa.service.impl;
+
+import cn.itcast.oa.base.impl.BaseDaoImpl;
+import cn.itcast.oa.domain.Privilege;
+import cn.itcast.oa.service.PrivilegeService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional
+public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements PrivilegeService {
+
+    @Override
+    public List<Privilege> findTopList() {
+        return getSession().createQuery("FROM Privilege p WHERE p.parent IS NULL").list();
+
+    }
+
+
+}

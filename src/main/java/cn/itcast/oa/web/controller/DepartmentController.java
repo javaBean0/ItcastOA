@@ -2,6 +2,7 @@ package cn.itcast.oa.web.controller;
 
 import cn.itcast.oa.base.BaseController;
 import cn.itcast.oa.domain.Department;
+import cn.itcast.oa.utils.DepartmentUtils;
 import com.opensymphony.xwork2.ActionContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Scope;
@@ -13,11 +14,23 @@ import java.util.List;
 @Scope("prototype")
 public class DepartmentController extends BaseController<Department> {
 
+    private Long parentId;
+
     /**
      * 列表
      */
     public String list() throws Exception {
-        List<Department> departmentList = departmentService.findAll();
+
+
+        List<Department> departmentList = null;
+       // departmentList = departmentService.findAll();
+        if(parentId == null){
+                departmentList = departmentService.findTopList();
+        }else{
+            departmentList = departmentService.findChildren(parentId);
+            Department parent = departmentService.getById(parentId);
+            ActionContext.getContext().put("parent", parent);
+        }
         ActionContext.getContext().put("departmentList", departmentList);
         return "list";
     }
@@ -34,13 +47,17 @@ public class DepartmentController extends BaseController<Department> {
      * 添加页面
      */
     public String addUI() throws Exception {
-        return "addUI";
+        List<Department> topList = departmentService.findTopList();
+        List<Department> departmentList = DepartmentUtils.getAllDepartments(topList);
+        ActionContext.getContext().put("departmentList", departmentList);
+        return "saveUI";
     }
 
     /**
      * 添加
      */
     public String add() throws Exception {
+        model.setParent(departmentService.getById(parentId));
         departmentService.save(model);
         return "toList";
     }
@@ -49,9 +66,15 @@ public class DepartmentController extends BaseController<Department> {
      * 编辑页面
      */
     public String editUI() throws Exception {
+        List<Department> topList = departmentService.findTopList();
+        List<Department> departmentList = DepartmentUtils.getAllDepartments(topList);
+        ActionContext.getContext().put("departmentList", departmentList);
         Department department = departmentService.getById(model.getId());
         ActionContext.getContext().getValueStack().push(department);
-        return "editUI";
+        if (department.getParent() != null) {
+            parentId = department.getParent().getId();
+        }
+        return "saveUI";
     }
 
     /**
@@ -60,8 +83,16 @@ public class DepartmentController extends BaseController<Department> {
     public String edit() throws Exception {
         Department department = departmentService.getById(model.getId());
         BeanUtils.copyProperties(model, department);
+        department.setParent(departmentService.getById(parentId));
         departmentService.update(department);
         return "toList";
     }
 
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
 }

@@ -64,7 +64,7 @@
             <td>${description}&nbsp;</td>
             <td><s:a action="userAction_delete.action?id=%{id}" onClick="return delConfirm()">删除</s:a>
                 <s:a action="userAction_editUI.action?id=%{id}">修改</s:a>
-                <s:a action="#" onClick="return window.confirm('您确定要初始化密码为1234吗？')">初始化密码</s:a>
+                <s:a action="userAction_initPassword.action?id=%{id}" onClick="return window.confirm('您确定要初始化密码为1234吗？')">初始化密码</s:a>
             </td>
         </tr>
         </s:iterator>

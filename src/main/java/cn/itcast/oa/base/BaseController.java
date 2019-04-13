@@ -1,6 +1,7 @@
 package cn.itcast.oa.base;
 
 import cn.itcast.oa.service.DepartmentService;
+import cn.itcast.oa.service.PrivilegeService;
 import cn.itcast.oa.service.RoleService;
 import cn.itcast.oa.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,8 @@ public class BaseController<T> extends ActionSupport implements ModelDriven<T> {
     protected RoleService roleService;
     @Resource
     protected DepartmentService departmentService;
+    @Resource
+    protected PrivilegeService privilegeService;
 
 
     protected T model;
