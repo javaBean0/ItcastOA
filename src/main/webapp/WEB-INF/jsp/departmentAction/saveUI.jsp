@@ -3,11 +3,7 @@
 <html>
 <head>
 	<title>部门设置</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script language="javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/pageCommon.js" charset="utf-8"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/PageUtils.js" charset="utf-8"></script>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/pageCommon.css" />
+    <%@include file="../public/common.jspf" %>
 </head>
 <body>
 
@@ -43,7 +39,7 @@
                         </td>
                     </tr>
                     <tr><td>部门名称</td>
-                        <td><s:textfield name="name" cssClass="InputStyle"/> *</td>
+                        <td><s:textfield name="name" cssClass="InputStyle required"/> *</td>
                     </tr>
                     <tr><td>职能说明</td>
                         <td><s:textarea name="description" cssClass="TextareaStyle"></s:textarea></td>

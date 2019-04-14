@@ -1,9 +1,13 @@
 package cn.itcast.oa.domain;
 
+import com.opensymphony.xwork2.ActionContext;
+
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class User {
+public class User implements Serializable{
 
     private Long id;
     private Department department;
@@ -15,6 +19,70 @@ public class User {
     private String phoneNumber; // 电话号码
     private String email; // 电子邮件
     private String description; // 说明
+
+    /**
+     * 判断本用户是否有指定名称的权限
+     * @param privilegeName
+     * @return
+     */
+    public boolean hasPrivilegeByName(String privilegeName){
+        //超级管理员有所有权限
+        if(isAdmin()){
+            return true;
+        }
+
+        //其他用户要有权限才返回true
+        for(Role role : roles){
+            for(Privilege privilege : role.getPrivileges()){
+                if(privilege.getName().equals(privilegeName)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 判断本用户是否有指定名称的权限
+     * @param privilegeUrl
+     * @return
+     */
+    public boolean hasPrivilegeByUrl(String privilegeUrl){
+        //超级管理员有所有权限
+        if(isAdmin()){
+            return true;
+        }
+
+        if(privilegeUrl.endsWith("UI")){
+            privilegeUrl = privilegeUrl.substring(0, privilegeUrl.length()-2);
+        }
+
+        List<String> allPrivilegeUrls = (List<String>) ActionContext.getContext().getApplication().get("allPrivilegeUrls");
+       if(!allPrivilegeUrls.contains(privilegeUrl)){
+           //如果是不需要控制的功能，则所有用户都可以使用
+            return true;
+       }else {
+           //其他用户要有权限才返回true
+           for(Role role : roles){
+               for(Privilege privilege : role.getPrivileges()){
+                   if(privilegeUrl.equals(privilege.getUrl())){
+                       return true;
+                   }
+               }
+           }
+       }
+        return false;
+    }
+
+
+    /**
+     * 判断是否是管理员登录
+     * @return
+     */
+    public boolean isAdmin(){
+        return "admin".equals(loginName);
+    }
 
     public Long getId() {
         return id;

@@ -18,5 +18,9 @@ public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements Priv
 
     }
 
+    @Override
+    public List<String> findAllPrivilegeUrls() {
+        return getSession().createQuery("select distinct p.url from Privilege p where p.url is not null").list();
+    }
 
 }

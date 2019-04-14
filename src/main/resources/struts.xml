@@ -12,6 +12,21 @@
 	<!-- 配置扩展名为action -->
 	<!--  <constant name="struts.action.extension" value="action" />-->
 	<package name="default" namespace="/" extends="struts-default">
+
+        <interceptors>
+            <interceptor name="checkInterceptor" class="cn.itcast.oa.interceptor.CheckPrivilegeInterceptor"></interceptor>
+
+            <interceptor-stack name="defaultStack"><!--把自定义拦截器栈重新命名为defaultStack-->
+                <interceptor-ref name="checkInterceptor"/>
+                <interceptor-ref name="defaultStack"/><!--引用struts2默认的拦截器栈-->
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+            <result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+        </global-results>
+
         <!--解决通配符不能用问题-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
@@ -42,8 +57,6 @@
             <result name="saveUI">/WEB-INF/jsp/userAction/saveUI.jsp</result>
             <result name="toList" type="redirectAction">userAction_list</result>
 
-
-			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
 			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
 			<result name="toIndex" type="redirect">/index.jsp</result>
         </action>

@@ -10,13 +10,10 @@
 <html>
 <head>
     <title>用户信息</title>
+    <%@include file="../public/common.jspf" %>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script language="javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/pageCommon.js" charset="utf-8"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/PageUtils.js" charset="utf-8"></script>
     <script language="javascript" src="${pageContext.request.contextPath}/script/DemoData.js" charset="utf-8"></script>
     <script language="javascript" src="${pageContext.request.contextPath}/script/DataShowManager.js" charset="utf-8"></script>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/pageCommon.css" />
     <script type="text/javascript">
     </script>
 </head>
@@ -37,6 +34,7 @@
 <div id=MainArea>
     <s:form action="userAction_%{id == null ? 'add' : 'edit'}.action">
         <s:hidden name="id"></s:hidden>
+        <s:hidden name="password"></s:hidden>
         <div class="ItemBlock_Title1"><!-- 信息说明 --><div class="ItemBlock_Title1">
             <img border="0" width="4" height="7" src="${pageContext.request.contextPath}/style/blue/images/item_point.gif" /> 用户信息 </div>
         </div>
@@ -55,12 +53,12 @@
                         </td>
                     </tr>
                     <tr><td>登录名</td>
-                        <td><s:textfield type="text" name="loginName" cssClass="InputStyle"/> *
+                        <td><s:textfield type="text" name="loginName" cssClass="InputStyle required"/> *
                             （登录名要唯一）
                         </td>
                     </tr>
                     <tr><td>姓名</td>
-                        <td><s:textfield type="text" name="name" cssClass="InputStyle"/> *</td>
+                        <td><s:textfield type="text" name="name" cssClass="InputStyle required"/> *</td>
                     </tr>
                     <tr><td>性别</td>
                         <td><s:radio name="gender" list="#{'男':'男','女':'女'}"></s:radio></td>
@@ -69,7 +67,7 @@
                         <td><s:textfield type="text" name="phoneNumber" cssClass="InputStyle"/></td>
                     </tr>
                     <tr><td>E-mail</td>
-                        <td><s:textfield type="text" name="email" cssClass="InputStyle"/></td>
+                        <td><s:textfield type="text" name="email" cssClass="InputStyle email"/></td>
                     </tr>
                     <tr><td>备注</td>
                         <td><s:textarea name="description" cssClass="TextareaStyle"></s:textarea></td>

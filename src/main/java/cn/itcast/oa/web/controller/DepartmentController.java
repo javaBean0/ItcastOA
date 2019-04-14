@@ -62,13 +62,14 @@ public class DepartmentController extends BaseController<Department> {
         return "toList";
     }
 
-    /**
-     * 编辑页面
-     */
+    /** 修改页面 */
     public String editUI() throws Exception {
+        // 准备数据：departmentList，显示为树状结构
         List<Department> topList = departmentService.findTopList();
         List<Department> departmentList = DepartmentUtils.getAllDepartments(topList);
         ActionContext.getContext().put("departmentList", departmentList);
+
+        // 准备回显的信息
         Department department = departmentService.getById(model.getId());
         ActionContext.getContext().getValueStack().push(department);
         if (department.getParent() != null) {
@@ -76,6 +77,8 @@ public class DepartmentController extends BaseController<Department> {
         }
         return "saveUI";
     }
+
+
 
     /**
      * 编辑
@@ -85,7 +88,7 @@ public class DepartmentController extends BaseController<Department> {
         BeanUtils.copyProperties(model, department);
         department.setParent(departmentService.getById(parentId));
         departmentService.update(department);
-        return "toList";
+        return "toL";
     }
 
     public Long getParentId() {

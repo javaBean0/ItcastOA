@@ -98,9 +98,9 @@ public class Installer {
     public static void main(String[] args) {
         System.out.println("正在执行安装。。。。");
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("config/spring/applicationContext.xml");
+        /*ApplicationContext applicationContext = new ClassPathXmlApplicationContext("config/spring/applicationContext.xml");
         Installer installer = (Installer) applicationContext.getBean("installer");
-        installer.install();
+        installer.install();*/
 
 
         System.out.println("===安装完成===");

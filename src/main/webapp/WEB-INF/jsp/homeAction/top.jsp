@@ -22,8 +22,9 @@
 		<div id="Logo">
         	<iframe name="autoRefashion" src="" width="0" height="0"></iframe>
 			<a id="msgLink" href="javascript:void(0)"></a>
-            <font color="#0000CC" style="color:#F1F9FE; font-size:28px; font-family:Arial Black, Arial">Itcast OA</font> 
-			<!--<img border="0" src="css/blue/images/logo.png" />-->
+            <font color="#0000CC" style="color:#F1F9FE; font-size:28px; font-family:Arial Black, Arial">Itcast OA</font>
+           <%-- <span style="color:#F1F9FE; font-size:28px; font-family:Arial Black, Arial">OA</span>--%>
+			<%--<img border="0" src="css/blue/images/logo.png" />--%>
         </div>
 		<div id="Head1Right">
 			<div id="Head1Right_UserName">

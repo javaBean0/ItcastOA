@@ -26,6 +26,12 @@ public class UserController extends BaseController<User> {
      */
     public String list() throws Exception {
         List<User> userList = userService.findAll();
+        for (User user : userList) {
+            if ("admin".equals(user.getLoginName())) {
+                userList.remove(user);
+                break;
+            }
+        }
         ActionContext.getContext().put("userList", userList);
         return "list";
     }
@@ -52,6 +58,7 @@ public class UserController extends BaseController<User> {
         model.setDepartment(departmentService.getById(departmentId));
         List<Role> roleList = roleService.getByIds(roleIds);
         model.setRoles(new HashSet<Role>(roleList));
+        model.setPassword(DigestUtils.md5DigestAsHex("1234".getBytes()));
         userService.save(model);
         return "toList";
 
@@ -70,7 +77,7 @@ public class UserController extends BaseController<User> {
         ActionContext.getContext().put("roleList", roleList);
         User user = userService.getById(model.getId());
         ActionContext.getContext().getValueStack().push(user);
-        if(user.getDepartment() != null){
+        if (user.getDepartment() != null) {
             departmentId = user.getDepartment().getId();
         }
         return "saveUI";
@@ -96,20 +103,24 @@ public class UserController extends BaseController<User> {
         return "toList";
     }
 
-    /**登录页面*/
-    public String loginUI() throws Exception{
+    /**
+     * 登录页面
+     */
+    public String loginUI() throws Exception {
         return "loginUI";
     }
 
-    /**登录*/
-    public String login() throws Exception{
+    /**
+     * 登录
+     */
+    public String login() throws Exception {
         //如果直接通过url访问
-        if(model.getLoginName() == null){
+        if (model.getLoginName() == null) {
             addFieldError("login", "您还没有登录，请登录！");
             return "loginUI";
         }
         User user = userService.getByLoginnameAndPassword(model.getLoginName(), model.getPassword());
-        if(user == null){
+        if (user == null) {
             addFieldError("login", "用户名或密码不正确");
             return "loginUI";
         }
@@ -118,12 +129,13 @@ public class UserController extends BaseController<User> {
         return "toIndex";
     }
 
-    /**注销*/
-    public String logout() throws Exception{
+    /**
+     * 注销
+     */
+    public String logout() throws Exception {
         ActionContext.getContext().getSession().remove("user");
         return "logout";
     }
-
 
     /**
      * 初始化密码

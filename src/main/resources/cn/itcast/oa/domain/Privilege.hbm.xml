@@ -18,7 +18,7 @@
         </set>
 
         <!--parent属性： 与Privilege（上级）的多对一-->
-        <many-to-one name="parent" class="Privilege" column="parentId" lazy="false"></many-to-one>
+        <many-to-one name="parent" class="Privilege" column="parentId"></many-to-one>
 
         <!--children属性， 与Privilege（下级）的一对多关系-->
         <set name="children" order-by="id" lazy="false">

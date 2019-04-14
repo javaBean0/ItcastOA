@@ -8,6 +8,10 @@
         $(function(){
             document.forms[0].loginName.focus();
         });
+
+        if(window.parent != window){
+            window.parent.location.reload(true);
+        }
     </script>
 </head>
 
