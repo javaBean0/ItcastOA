@@ -1,9 +1,8 @@
 package cn.itcast.oa.base;
 
-import cn.itcast.oa.service.DepartmentService;
-import cn.itcast.oa.service.PrivilegeService;
-import cn.itcast.oa.service.RoleService;
-import cn.itcast.oa.service.UserService;
+import cn.itcast.oa.domain.User;
+import cn.itcast.oa.service.*;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -20,6 +19,12 @@ public class BaseController<T> extends ActionSupport implements ModelDriven<T> {
     protected DepartmentService departmentService;
     @Resource
     protected PrivilegeService privilegeService;
+    @Resource
+    protected ForumService forumService;
+    @Resource
+    protected TopicService topicService;
+    @Resource
+    protected ReplyService replyService;
 
 
     protected T model;
@@ -38,4 +43,9 @@ public class BaseController<T> extends ActionSupport implements ModelDriven<T> {
     public T getModel() {
         return model;
     }
+
+    protected User getCurrentUser(){
+        return (User) ActionContext.getContext().getSession().get("user");
+    }
+
 }

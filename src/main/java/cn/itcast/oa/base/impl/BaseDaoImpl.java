@@ -29,7 +29,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return sessionFactory.getCurrentSession();
     }
 
-    @Override
+
     public void save(Object entity) {
         getSession().save(entity);
     }

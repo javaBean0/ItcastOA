@@ -66,5 +66,4 @@ public class Department implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 }

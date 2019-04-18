@@ -3,12 +3,12 @@
 <html>
 <head>
     <title>导航菜单</title>
-    <%@ include file="/WEB-INF/jsp/public/common.jspf" %>
-    <link type="text/css" rel="stylesheet" href="style/blue/menu.css"/>
+    <%@ include file="/WEB-INF/jsp/public/common.jspf"%>
+    <link type="text/css" rel="stylesheet" href="style/blue/menu.css" />
     <script type="text/javascript">
         function menuClick(menuDiv) {
-            //$(".MenuLevel2").not($(menuDiv).next()).hide();
-            //$(menuDiv).next().toggle();
+            $(".MenuLevel2").not($(menuDiv).next()).hide();
+            $(menuDiv).next().toggle();
         }
        /* if(window.parent == window){
             window.parent.location.reload(true);
@@ -28,7 +28,7 @@
                     <div onClick="menuClick(this)" class="level1Style">
                         <img src="style/images/MenuIcon/${icon}" class="Icon"/>${name}</div>
                         <%--二级菜单display: none;--%>
-                    <ul <%--style="display: none"--%> class="MenuLevel2">
+                    <ul style="display: none" class="MenuLevel2">
                         <s:iterator value="children">
                             <s:if test="#session.user.hasPrivilegeByName(name)">
                                 <li class="level2">
