@@ -60,7 +60,7 @@ public class TopicController extends BaseController<Topic> {
         // >> 应放到业务方法的一个其他设置
         topicService.saveTopic(model);
 
-        return "toshow";
+        return "toShow";
     }
 
     public Long getForumId() {

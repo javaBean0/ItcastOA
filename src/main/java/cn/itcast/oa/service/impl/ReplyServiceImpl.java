@@ -18,6 +18,11 @@ public class ReplyServiceImpl extends BaseDaoImpl<Reply> implements ReplyService
 
     @Override
     public List<Reply> findByTopic(Topic topic) {
-        return null;
+        return getSession().createQuery(//
+                // 排序：最前面的是最早发表的回帖
+                "FROM Reply r WHERE r.topic=? ORDER BY r.postTime ASC")//
+                .setParameter(0, topic)//
+                .list();
     }
+
 }

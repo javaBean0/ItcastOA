@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/departmentAction/addUI.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/departmentAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/homeAction/left.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/homeAction" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/replyAction/addUI.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/replyAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/roleAction/editUI.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/roleAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/roleAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userAction/addUI.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userAction" />

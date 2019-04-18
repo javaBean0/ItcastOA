@@ -2,6 +2,7 @@ package cn.itcast.oa.service.impl;
 
 import cn.itcast.oa.base.impl.BaseDaoImpl;
 import cn.itcast.oa.domain.Forum;
+import cn.itcast.oa.domain.Reply;
 import cn.itcast.oa.domain.Topic;
 import cn.itcast.oa.service.TopicService;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,24 @@ public class TopicServiceImpl extends BaseDaoImpl<Topic> implements TopicService
         forum.setArticleCount(forum.getArticleCount() + 1); // 文章数（主题+回复）
         forum.setLastTopic(topic); // 最后发表的主题
         getSession().update(forum); // 更新
+    }
+
+    @Override
+    public void saveTopic(Reply reply) {
+        //保存到数据库
+        getSession().save(reply);
+        //维护相关的信息
+        Topic topic = reply.getTopic();
+        Forum forum = topic.getForum();
+
+
+        forum.setArticleCount(forum.getArticleCount() + 1);
+        topic.setReplyCount(topic.getReplyCount() + 1);
+        topic.setLastReply(reply);
+        topic.setLastUpdateTime(reply.getPostTime());
+
+        getSession().save(topic);
+        getSession().save(forum);
+
     }
 }

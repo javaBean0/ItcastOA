@@ -349,7 +349,7 @@ ul {
 }
 
 .ItemBlockBorderTree {
-    float: left;
+	float: left;
 	width: 25%;
 	text-align: left;
 	border: 1px solid #91c0e3;
@@ -357,8 +357,8 @@ ul {
 }
 
 .ItemBlockBorderList {
-    float: right;
-	width: 73%;	
+	float: right;
+	width: 73%;
 	border: 1px solid #91c0e3;
 }
 
@@ -475,11 +475,11 @@ A.OpenWinLink:hover {
 	height: 19px;
 }
 .msgBorder{
-		border: 1px solid #ABD9FB;
+	border: 1px solid #ABD9FB;
 }
 
 
-#Description, 
+#Description,
 .Description {
 	float: left;
 	width: 90%;
@@ -703,8 +703,8 @@ A.OpenWinLink:hover {
 	border-left: 1px solid #d2d2d2;
 	border-right: 1px solid #ffffff;
 }#TableData1 {
-	width: 100%;
-}
+	 width: 100%;
+ }
 #TableData1 td {
 	height: 24px;
 	vertical-align: middle;
@@ -721,18 +721,18 @@ label.error{
 }
 
 .PageView{
-    font-family: tohoma; 
+	font-family: tohoma;
 }
 
 .CurrentPage{
-    color: red;
+	color: red;
 }
 
 .PageNumInput{
-    width: 50px;
-    height: 20px;
-    padding: 1px;
-    font-size: 11px;
+	width: 50px;
+	height: 20px;
+	padding: 1px;
+	font-size: 11px;
 }
 
 #PageHead {
@@ -756,7 +756,7 @@ select {
 }
 
 form{
-	margin: 0; 
+	margin: 0;
 	padding: 0;
 }
 .scrollStyle {
@@ -765,13 +765,13 @@ form{
 }
 
 .writeTD {
-	BORDER: #91c0e3 1px solid; 
+	BORDER: #91c0e3 1px solid;
 }
 
 .InputAreaStyle {
-	BORDER: #91c0e3 1px solid; 
+	BORDER: #91c0e3 1px solid;
 	width: 100%;
-	HEIGHT: 95%; 
+	HEIGHT: 95%;
 	BACKGROUND-COLOR: #FFFFFF;
 	color: #004779;
 }
@@ -785,21 +785,21 @@ form{
 }
 
 .InputStyle1{
-	BORDER-TOP: #CCCCCC 1px solid; 
-	BORDER-BOTTOM: #CCCCCC 1px solid; 
-	BORDER-LEFT: #CCCCCC 1px solid; 
+	BORDER-TOP: #CCCCCC 1px solid;
+	BORDER-BOTTOM: #CCCCCC 1px solid;
+	BORDER-LEFT: #CCCCCC 1px solid;
 	BORDER-RIGHT: #CCCCCC 1px solid;
 	BACKGROUND-COLOR: #FFFFFF;
-	color: #616161; 
+	color: #616161;
 	BACKGROUND-COLOR: #FFFFFF;
 	width: 100%;
 	HEIGHT: 22px;
 	padding:3px;
-	font-size:10pt; 
+	font-size:10pt;
 }
 
 .TextareaStyle{
-	BORDER: #91c0e3 1px solid; 
+	BORDER: #91c0e3 1px solid;
 	width: 300px;
 	height: 80px;
 	BACKGROUND-COLOR: #FFFFFF;
@@ -807,40 +807,40 @@ form{
 }
 
 .disabledInput {
-	BORDER-TOP: #91c0e3 1px solid; 
-	BORDER-BOTTOM: #91c0e3 1px solid; 
-	BORDER-LEFT: #91c0e3 1px solid; 
-	BORDER-RIGHT: #91c0e3 1px solid; 
+	BORDER-TOP: #91c0e3 1px solid;
+	BORDER-BOTTOM: #91c0e3 1px solid;
+	BORDER-LEFT: #91c0e3 1px solid;
+	BORDER-RIGHT: #91c0e3 1px solid;
 	width: 100%;
-	HEIGHT: auto; 
+	HEIGHT: auto;
 	BACKGROUND-COLOR: #FFFFFF
 }
 
 .errorInput {
-	BORDER-TOP: #91c0e3 1px solid; 
-	BORDER-BOTTOM: #91c0e3 1px solid; 
-	BORDER-LEFT: #91c0e3 1px solid; 
-	BORDER-RIGHT: #91c0e3 1px solid; 
-	HEIGHT: auto; 
+	BORDER-TOP: #91c0e3 1px solid;
+	BORDER-BOTTOM: #91c0e3 1px solid;
+	BORDER-LEFT: #91c0e3 1px solid;
+	BORDER-RIGHT: #91c0e3 1px solid;
+	HEIGHT: auto;
 	BACKGROUND-COLOR: #F8E5E4
 	color: #004779;
 }
 
 .notWrite {
-	BORDER-TOP: #91c0e3 0px solid; 
-	BORDER-BOTTOM: #91c0e3 0px solid; 
-	BORDER-LEFT: #91c0e3 0px solid; 
-	BORDER-RIGHT: #91c0e3 0px solid; 
-	HEIGHT: auto; 
+	BORDER-TOP: #91c0e3 0px solid;
+	BORDER-BOTTOM: #91c0e3 0px solid;
+	BORDER-LEFT: #91c0e3 0px solid;
+	BORDER-RIGHT: #91c0e3 0px solid;
+	HEIGHT: auto;
 	BACKGROUND-COLOR: transparent;
 	color: #004779;
 }
 
 .notWriteByTextArea {
-	BORDER-TOP: #91c0e3 0px solid; 
-	BORDER-BOTTOM: #91c0e3 0px solid; 
-	BORDER-LEFT: #91c0e3 0px solid; 
-	BORDER-RIGHT: #91c0e3 0px solid; 
+	BORDER-TOP: #91c0e3 0px solid;
+	BORDER-BOTTOM: #91c0e3 0px solid;
+	BORDER-LEFT: #91c0e3 0px solid;
+	BORDER-RIGHT: #91c0e3 0px solid;
 	HEIGHT: 100%;
 	BACKGROUND-COLOR: transparent;
 	color: #004779;
@@ -848,10 +848,10 @@ form{
 
 .SelectStyle {
 	width: 250px;
-	BORDER-TOP: #91c0e3 1px solid; 
-	BORDER-BOTTOM: #91c0e3 1px solid; 
-	BORDER-LEFT: #91c0e3 1px solid; 
-	BORDER-RIGHT: #91c0e3 1px solid; 
+	BORDER-TOP: #91c0e3 1px solid;
+	BORDER-BOTTOM: #91c0e3 1px solid;
+	BORDER-LEFT: #91c0e3 1px solid;
+	BORDER-RIGHT: #91c0e3 1px solid;
 	color: #004779;
 	font-family: "Tahoma";
 }
@@ -863,7 +863,7 @@ form{
 	background-color: #dbecf8;
 	border: 1px solid #2886c5;
 	color: #2886c5;
-	
+
 }
 
 .DetailBlock {
@@ -941,9 +941,9 @@ form{
 	scrolling: no;
 	border:1px solid #EEEEEE ;
 	position: absolute;
-	width: 160px; 
+	width: 160px;
 	height: 140px;
-	z-index: 200; 
+	z-index: 200;
 	filter: progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#dddddd,strength=5);
 }
 
@@ -1006,8 +1006,8 @@ form{
 }
 
 #Time_Tail {
-	float: right; 
-	padding-right: 10px; 
+	float: right;
+	padding-right: 10px;
 	height:20px;
 	cursor: hand;
 }
@@ -1041,7 +1041,7 @@ form{
 
 /*====================*/
 td.tsubmitBtnTD{
-	padding-top:10px; 
+	padding-top:10px;
 	padding-left:35%;
 }
 

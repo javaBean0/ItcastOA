@@ -75,7 +75,7 @@
         <!-- 论坛：回复相关功能 -->
         <action name="replyAction_*" class="replyController" method="{1}">
             <result name="addUI">/WEB-INF/jsp/replyAction/addUI.jsp</result>
-            <result name="toList" type="redirectAction">replyAction_list</result>
+            <result name="toTopicShow" type="redirectAction">topicAction_show</result>
         </action>
 
 

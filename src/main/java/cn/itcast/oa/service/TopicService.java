@@ -2,6 +2,7 @@ package cn.itcast.oa.service;
 
 import cn.itcast.oa.base.BaseDao;
 import cn.itcast.oa.domain.Forum;
+import cn.itcast.oa.domain.Reply;
 import cn.itcast.oa.domain.Topic;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface TopicService extends BaseDao<Topic>{
     List<Topic> findByForum(Forum forum);
 
     void saveTopic(Topic topic);
+
+    void saveTopic(Reply model);
 }
