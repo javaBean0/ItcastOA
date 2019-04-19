@@ -24,10 +24,10 @@
     <!-- 配置数据库连接池（c3p0） -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!-- 基本信息 -->
-        <property name="jdbcUrl" value="${jdbcUrl}"></property>
-        <property name="driverClass" value="${driverClass}"></property>
-        <property name="user" value="${username}"></property>
-        <property name="password" value="${password}"></property>
+        <property name="jdbcUrl" value="${mysql.jdbcUrl}"></property>
+        <property name="driverClass" value="${mysql.driverClass}"></property>
+        <property name="user" value="${mysql.username}"></property>
+        <property name="password" value="${mysql.password}"></property>
         <!-- 其他配置 -->
         <!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
         <property name="initialPoolSize" value="3"></property>
@@ -55,7 +55,7 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.format_sql">false</prop>
             </props>
             <!-- 上述的配置可以简写成以下 -->
            <!-- <value>
